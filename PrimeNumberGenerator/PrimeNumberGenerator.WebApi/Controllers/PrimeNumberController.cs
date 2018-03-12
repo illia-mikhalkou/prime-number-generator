@@ -1,4 +1,5 @@
 ﻿using PrimeNumberGenerator.WebApi.Interfaces;
+using System;
 using System.Web.Http;
 
 namespace PrimeNumberGenerator.WebApi.Controllers
