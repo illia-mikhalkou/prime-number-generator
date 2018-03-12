@@ -3,7 +3,7 @@
 		<div ng-form name="primeNumberForm">
 			Enter Number:&nbsp;
 			<input type="number" name="inputNumberControl" min="1" max="2147483647" pattern="\d+" required ng-model="inputNumber" />
-			<input type="button" value="Generate Prime List" ng-click="checkNumber()" ng-disabled="primeNumberForm.inputNumberControl.$invalid" />
+			<input type="button" value="Generate Prime List" ng-click="generatePrimeList()" ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
 			<br />
 			<div class="red bold" ng-show="primeNumberForm.inputNumberControl.$dirty && primeNumberForm.inputNumberControl.$invalid">
 				<div ng-show="primeNumberForm.inputNumberControl.$error.required">
@@ -22,6 +22,7 @@
 						<span ng-if="result.isChecking">checking...</span>
 					</span>
 				</li>
+				<li class="red" ng-show="error">Error occurred during generation of prime list: {{error}}</li>
 			</ul>
 		</div>
 	</div>
