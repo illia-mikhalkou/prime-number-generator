@@ -1,10 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
 using PrimeNumberGenerator.WebApi.Interfaces;
-using PrimeNumberGenerator.WebApi.Services;
+using PrimeNumberGenerator.WebApi.Services.PrimeNumber;
 using System.Reflection;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace PrimeNumberGenerator.WebApi.App_Start
 {
