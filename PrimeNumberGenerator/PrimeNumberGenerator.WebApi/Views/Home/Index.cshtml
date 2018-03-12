@@ -13,19 +13,35 @@
 			<div ng-controller="PrimeNumberGeneratorCtrl">
 				<div ng-form name="primeNumberForm">
 					Enter Number:&nbsp;
-					<input type="number" name="inputNumberControl" min="1" max="2147483647" pattern="\d+" required ng-model="inputNumber" />
-					<input type="button" value="Generate Prime List" ng-click="generatePrimeList()" ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
+					<input 
+						   type="number" 
+						   name="inputNumberControl" 
+						   min="1" 
+						   max="2147483647" 
+						   pattern="\d+" 
+						   required 
+						   ng-model="inputNumber" />
+					<input 
+						   type="button" 
+						   value="Generate Prime List" 
+						   ng-click="generatePrimeList()" 
+						   ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
 					<br />
-					<div class="red bold" ng-show="primeNumberForm.inputNumberControl.$dirty" ng-messages="primeNumberForm.inputNumberControl.$error" role="alert">
+					<div 
+						 class="red bold" 
+						 ng-show="primeNumberForm.inputNumberControl.$dirty" 
+						 ng-messages="primeNumberForm.inputNumberControl.$error" 
+						 role="alert">
+
 						<div ng-message="required" ng-bind="requiredErrorMessage"></div>
 						<div ng-message="number,min,max,pattern" ng-bind="rangeErrorMessage"></div>
 					</div>
 					<ul class="ng-generated-list">
 						<li ng-repeat="result in results">
 							<span ng-class="{green: !result.isChecking && result.isPrime, red: !result.isChecking && !result.isPrime, blue: result.isChecking}">
-								<span ng-bind="result.number + ' - '"></span>
-								<span ng-if="!result.isChecking && result.isPrime" ng-bind="primeMessage"></span>
-								<span ng-if="!result.isChecking && !result.isPrime" ng-bind="notPrimeMessage"></span>
+								<span ng-bind="::result.number + ' - '"></span>
+								<span ng-if="!result.isChecking && result.isPrime" ng-bind="::primeMessage"></span>
+								<span ng-if="!result.isChecking && !result.isPrime" ng-bind="::notPrimeMessage"></span>
 								<span ng-if="result.isChecking" ng-bind="checkingMessage"></span>
 							</span>
 						</li>
