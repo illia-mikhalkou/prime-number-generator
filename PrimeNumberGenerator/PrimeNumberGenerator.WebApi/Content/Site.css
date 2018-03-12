@@ -15,3 +15,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	border-top: 1px solid black;
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: red;
+}
+
+.blue {
+	color: blue;
+}
