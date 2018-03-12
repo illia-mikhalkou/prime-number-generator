@@ -39,3 +39,11 @@ input.ng-invalid.ng-dirty {
 input.ng-valid.ng-dirty {
 	border: 1px solid green;
 }
+
+ul.ng-generated-list li {
+	list-style-type: none;
+}
+
+ul.ng-generated-list li.ng-scope {
+	list-style-type: disc;
+}

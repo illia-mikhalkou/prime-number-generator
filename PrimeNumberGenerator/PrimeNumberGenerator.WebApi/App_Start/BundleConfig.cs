@@ -12,7 +12,7 @@ namespace PrimeNumberGenerator.WebApi
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
 
-			bundles.Add(new ScriptBundle("~/bundles/angularjs").Include("~/Scripts/angular.js"));
+			bundles.Add(new ScriptBundle("~/bundles/angularjs").Include("~/Scripts/angular.js", "~/Scripts/angular-messages.js"));
 		}
 	}
 }
