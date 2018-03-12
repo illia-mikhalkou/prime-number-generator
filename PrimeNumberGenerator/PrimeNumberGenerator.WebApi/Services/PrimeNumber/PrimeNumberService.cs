@@ -10,7 +10,12 @@ namespace PrimeNumberGenerator.WebApi.Services.PrimeNumber
 
 		public bool IsPrime(int number)
 		{
-			if(cache.TryGetValue(number, out bool existingResult))
+			if (number < 1)
+			{
+				throw new ArgumentException(nameof(number));
+			}
+
+			if (cache.TryGetValue(number, out bool existingResult))
 			{
 				return existingResult;
 			}

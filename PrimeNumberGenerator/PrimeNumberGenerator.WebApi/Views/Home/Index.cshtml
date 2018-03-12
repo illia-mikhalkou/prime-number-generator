@@ -1,4 +1,5 @@
-﻿<div ng-app="PrimeNumberGeneratorApp">
+﻿
+<div ng-app="PrimeNumberGeneratorApp">
 	<div ng-controller="PrimeNumberGeneratorCtrl">
 		<div ng-form name="primeNumberForm">
 			Enter Number:&nbsp;
@@ -16,19 +17,18 @@
 			<ul>
 				<li ng-repeat="result in results">
 					<span ng-class="{green: !result.isChecking && result.isPrime, red: !result.isChecking && !result.isPrime, blue: result.isChecking}">
-						{{result.number}}&nbsp;-&nbsp;
+						<span ng-bind="result.number + ' - '"></span>
 						<span ng-if="!result.isChecking && result.isPrime">prime</span>
 						<span ng-if="!result.isChecking && !result.isPrime">not prime</span>
 						<span ng-if="result.isChecking">checking...</span>
 					</span>
 				</li>
-				<li class="red" ng-show="error">Error occurred during generation of prime list: {{error}}</li>
+				<li class="red" ng-show="error">Error occurred during generation of prime list</li>
 			</ul>
 		</div>
 	</div>
 </div>
-
 @section scripts {
-	@Scripts.Render("~/Scripts/angular.js")
+	@Scripts.Render("~/bundles/angularjs")
 	@Scripts.Render("~/Scripts/app/controllers/prime-number-generator-controller.js")
 }
