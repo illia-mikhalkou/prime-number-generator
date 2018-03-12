@@ -1,34 +1,42 @@
-﻿
-<div ng-app="PrimeNumberGeneratorApp">
-	<div ng-controller="PrimeNumberGeneratorCtrl">
-		<div ng-form name="primeNumberForm">
-			Enter Number:&nbsp;
-			<input type="number" name="inputNumberControl" min="1" max="2147483647" pattern="\d+" required ng-model="inputNumber" />
-			<input type="button" value="Generate Prime List" ng-click="generatePrimeList()" ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
-			<br />
-			<div class="red bold" ng-show="primeNumberForm.inputNumberControl.$dirty && primeNumberForm.inputNumberControl.$invalid">
-				<div ng-show="primeNumberForm.inputNumberControl.$error.required">
-					Please enter a number.
-				</div>
-				<div ng-show="primeNumberForm.inputNumberControl.$error.number || primeNumberForm.inputNumberControl.$error.min || primeNumberForm.inputNumberControl.$error.max || primeNumberForm.inputNumberControl.$error.pattern">
-					Please enter integer number more than 0 and less than 2147483648.
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Prime Number Generator</title>
+	@Styles.Render("~/Content/Site.css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<div class="container body-content">
+		<div ng-app="PrimeNumberGeneratorApp">
+			<div ng-controller="PrimeNumberGeneratorCtrl">
+				<div ng-form name="primeNumberForm">
+					Enter Number:&nbsp;
+					<input type="number" name="inputNumberControl" min="1" max="2147483647" pattern="\d+" required ng-model="inputNumber" />
+					<input type="button" value="Generate Prime List" ng-click="generatePrimeList()" ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
+					<br />
+					<div class="red bold" ng-show="primeNumberForm.inputNumberControl.$dirty" ng-messages="primeNumberForm.inputNumberControl.$error" role="alert">
+						<div ng-message="required" ng-bind="requiredErrorMessage"></div>
+						<div ng-message="number,min,max,pattern" ng-bind="rangeErrorMessage"></div>
+					</div>
+					<ul class="ng-generated-list">
+						<li ng-repeat="result in results">
+							<span ng-class="{green: !result.isChecking && result.isPrime, red: !result.isChecking && !result.isPrime, blue: result.isChecking}">
+								<span ng-bind="result.number + ' - '"></span>
+								<span ng-if="!result.isChecking && result.isPrime" ng-bind="primeMessage"></span>
+								<span ng-if="!result.isChecking && !result.isPrime" ng-bind="notPrimeMessage"></span>
+								<span ng-if="result.isChecking" ng-bind="checkingMessage"></span>
+							</span>
+						</li>
+						<li class="red" ng-show="error" ng-bind="errorMessage"></li>
+					</ul>
 				</div>
 			</div>
-			<ul>
-				<li ng-repeat="result in results">
-					<span ng-class="{green: !result.isChecking && result.isPrime, red: !result.isChecking && !result.isPrime, blue: result.isChecking}">
-						<span ng-bind="result.number + ' - '"></span>
-						<span ng-if="!result.isChecking && result.isPrime">prime</span>
-						<span ng-if="!result.isChecking && !result.isPrime">not prime</span>
-						<span ng-if="result.isChecking">checking...</span>
-					</span>
-				</li>
-				<li class="red" ng-show="error">Error occurred during generation of prime list</li>
-			</ul>
 		</div>
 	</div>
-</div>
-@section scripts {
+
 	@Scripts.Render("~/bundles/angularjs")
 	@Scripts.Render("~/Scripts/app/controllers/prime-number-generator-controller.js")
-}
+</body>
+</html>
