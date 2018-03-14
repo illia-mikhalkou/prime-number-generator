@@ -39,10 +39,7 @@
 					<ul class="ng-generated-list">
 						<li ng-repeat="result in results">
 							<span ng-class="{green: !result.isChecking && result.isPrime, red: !result.isChecking && !result.isPrime, blue: result.isChecking}">
-								<span ng-bind="::result.number + ' - '"></span>
-								<span ng-if="!result.isChecking && result.isPrime" ng-bind="::primeMessage"></span>
-								<span ng-if="!result.isChecking && !result.isPrime" ng-bind="::notPrimeMessage"></span>
-								<span ng-if="result.isChecking" ng-bind="checkingMessage"></span>
+								<span ng-bind="::result.toDisplayString()"></span>
 							</span>
 						</li>
 						<li class="red" ng-show="error" ng-bind="errorMessage"></li>
@@ -53,6 +50,7 @@
 	</div>
 
 	@Scripts.Render("~/bundles/angularjs")
+	@Scripts.Render("~/Scripts/app/models/prime-number-result.js")
 	@Scripts.Render("~/Scripts/app/controllers/prime-number-generator-controller.js")
 </body>
 </html>

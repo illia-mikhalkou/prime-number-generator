@@ -32,7 +32,7 @@
 				return;
 			}
 
-			$scope.results.push({ number: currentNumber, isPrime: false, isChecking: true });
+			$scope.results.push(new PrimeNumberResult(currentNumber));
 			$http.get(`/api/primenumber/${currentNumber}`).then(function (response) {
 				$scope.results[index].isPrime = response.data;
 				$scope.results[index].isChecking = false;
