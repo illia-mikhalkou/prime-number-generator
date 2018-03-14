@@ -4,9 +4,6 @@
 		$scope.errorMessage = 'Error occurred during generation of prime list.';
 		$scope.requiredErrorMessage = 'Please enter a number.';
 		$scope.rangeErrorMessage = 'Please enter integer number more than 0 and less than 2147483648.';
-		$scope.primeMessage = 'prime.';
-		$scope.notPrimeMessage = 'not prime.';
-		$scope.checkingMessage = 'checking...';
 
 		$scope.inputNumber = null;
 		$scope.checking = false;
