@@ -1,4 +1,4 @@
-﻿angular
+﻿const angularApp = angular
 	.module('PrimeNumberGeneratorApp', ['ngMessages'])
 	.controller('PrimeNumberGeneratorCtrl', ['$scope', '$http', function ($scope, $http) {
 		$scope.errorMessage = 'Error occurred during generation of prime list.';

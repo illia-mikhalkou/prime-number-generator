@@ -13,24 +13,21 @@
 			<div ng-controller="PrimeNumberGeneratorCtrl">
 				<div ng-form name="primeNumberForm">
 					Enter Number:&nbsp;
-					<input 
-						   type="number" 
-						   name="inputNumberControl" 
-						   min="1" 
-						   max="2147483647" 
-						   pattern="\d+" 
-						   required 
+					<input type="number"
+						   name="inputNumberControl"
+						   min="1"
+						   max="2147483647"
+						   pattern="\d+"
+						   required
 						   ng-model="inputNumber" />
-					<input 
-						   type="button" 
-						   value="Generate Prime List" 
-						   ng-click="generatePrimeList()" 
+					<input type="button"
+						   value="Generate Prime List"
+						   ng-click="generatePrimeList()"
 						   ng-disabled="primeNumberForm.inputNumberControl.$invalid || checking" />
 					<br />
-					<div 
-						 class="red bold" 
-						 ng-show="primeNumberForm.inputNumberControl.$dirty" 
-						 ng-messages="primeNumberForm.inputNumberControl.$error" 
+					<div class="red bold"
+						 ng-show="primeNumberForm.inputNumberControl.$dirty"
+						 ng-messages="primeNumberForm.inputNumberControl.$error"
 						 role="alert">
 
 						<div ng-message="required" ng-bind="requiredErrorMessage"></div>
@@ -46,11 +43,46 @@
 					</ul>
 				</div>
 			</div>
+			<hr />
+			<div ng-controller="DemoCtrl">
+				<div ng-form name="demoForm">
+					Enter Message Number:&nbsp;
+					<input type="number"
+						   name="getNumberControl"
+						   min="1"
+						   max="2147483647"
+						   pattern="\d+"
+						   required
+						   ng-model="getNumber" />
+					<input type="button"
+						   value="Get message from the server"
+						   ng-click="getMessage()"
+						   ng-disabled="demoForm.getNumberControl.$invalid" />
+					<br />
+					<br />
+					<br />
+					Enter Message Number:&nbsp;
+					<input type="number"
+						   name="numberControl"
+						   min="1"
+						   max="2147483647"
+						   pattern="\d+"
+						   required
+						   ng-model="number" />
+					&nbsp;Enter Message:&nbsp;
+					<input type="text" name="messageControl" required ng-model="message" />
+					<input type="button"
+						   value="Send message to the server"
+						   ng-click="saveMessage()"
+						   ng-disabled="demoForm.numberControl.$invalid" />
+				</div>
+			</div>
 		</div>
 	</div>
 
 	@Scripts.Render("~/bundles/angularjs")
 	@Scripts.Render("~/Scripts/app/models/prime-number-result.js")
 	@Scripts.Render("~/Scripts/app/controllers/prime-number-generator-controller.js")
+	@Scripts.Render("~/Scripts/app/controllers/demo-controller.js")
 </body>
 </html>
